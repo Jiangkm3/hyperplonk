@@ -6,10 +6,11 @@ edition = "2021"
 
 [dependencies]
 arithmetic = { path = "../arithmetic" }
-ark-ec = { version = "^0.5.0", default-features = false }
-ark-ff = { version = "^0.5.0", default-features = false }
-ark-poly = { version = "^0.5.0", default-features = false }
-ark-serialize = { version = "^0.5.0", default-features = false, features = [ "derive" ] }
+ark-ff = { git = "https://github.com/a16z/arkworks-algebra", rev = "b5f7031" }
+ark-ec = { git = "https://github.com/a16z/arkworks-algebra", rev = "b5f7031" }
+ark-serialize = { git = "https://github.com/a16z/arkworks-algebra", rev = "b5f7031" }
+ark-serialize-derive = { git = "https://github.com/a16z/arkworks-algebra", rev = "b5f7031" }
+ark-poly = { git = "https://github.com/a16z/arkworks-algebra", rev = "b5f7031" }
 ark-std = { version = "^0.5.0", default-features = false }
 displaydoc = { version = "0.2.3", default-features = false }
 rayon = { version = "1.5.2", default-features = false, optional = true }
@@ -18,7 +19,7 @@ transcript = { path = "../transcript" }
 util = { path = "../util" }
 
 [dev-dependencies]
-ark-bls12-381 = { version = "0.5.0", default-features = false, features = [ "curve" ] }
+ark-bls12-381 = { git = "https://github.com/a16z/arkworks-algebra", rev = "b5f7031" }
 # Benchmarks
 [[bench]]
 name = "hyperplonk-benches"
