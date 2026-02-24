@@ -10,7 +10,7 @@ extern crate criterion;
 use arithmetic::fix_variables;
 use ark_bls12_381::Fr;
 use ark_ff::Field;
-use ark_poly::{DenseMultilinearExtension, MultilinearExtension};
+use ark_poly::{DenseMultilinearExtension, MultilinearExtension, Polynomial};
 use ark_std::{ops::Range, test_rng};
 use criterion::{black_box, BenchmarkId, Criterion};
 
@@ -23,7 +23,7 @@ fn evaluation_op_bench<F: Field>(c: &mut Criterion) {
         group.bench_with_input(BenchmarkId::new("evaluate native", nv), &nv, |b, &nv| {
             let poly = DenseMultilinearExtension::<F>::rand(nv, &mut rng);
             let point: Vec<_> = (0..nv).map(|_| F::rand(&mut rng)).collect();
-            b.iter(|| black_box(poly.evaluate(&point).unwrap()))
+            b.iter(|| black_box(poly.evaluate(&point)))
         });
 
         group.bench_with_input(BenchmarkId::new("evaluate optimized", nv), &nv, |b, &nv| {
